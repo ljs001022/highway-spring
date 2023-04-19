@@ -1,4 +1,4 @@
-package hanium.highwayspring;
+package hanium.highwayspring.config;
 
 import hanium.highwayspring.user.UserRepository;
 import hanium.highwayspring.user.UserService;
