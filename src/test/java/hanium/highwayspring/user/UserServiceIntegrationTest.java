@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@Transactional
+//@Transactional
 class UserServiceIntegrationTest {
 
     @Autowired UserService userService;
@@ -18,8 +18,8 @@ class UserServiceIntegrationTest {
     void 회원가입(){
         //given
         User user = new User();
-        user.setUser_id("admin");
-        user.setUser_pw("1234");
+        user.setUserId("admin");
+        user.setUser_pw("admin1234");
         user.setUser_name("name");
         user.setUser_email("email");
         user.setUser_sex("man");
@@ -29,5 +29,13 @@ class UserServiceIntegrationTest {
 
         User findUser = userService.findOne(saveId).get();
         assertThat(user.getUser_name()).isEqualTo(findUser.getUser_name());
+    }
+
+    @Test
+    void 로그인(){
+        String id = "admin";
+        String pw = "admin1234";
+        Boolean login = userService.login(id, pw);
+        System.out.println(login);
     }
 }
